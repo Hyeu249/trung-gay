@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "version": "1.2",
+  "name": "Trung gay",
+  "description": "Trung gay.",
+  "devtools_page": "devtools/devtools.html",
+  "permissions": ["proxy", "storage", "nativeMessaging"]
+}
