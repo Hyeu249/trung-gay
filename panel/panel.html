@@ -159,36 +159,34 @@
           <div
             style="
               display: flex;
-              width: 150px;
+              width: 280px;
               justify-content: space-between;
               margin: 10px 0px;
             "
           >
-            <label for="random_params_file">random params file: </label>
+            <label for="proxy_number">Run number proxy: </label>
             <input
-              type="checkbox"
-              id="random_params_file"
-              name="random_params_file"
-              placeholder="Enter your random_params_file"
-              style="outline: none"
+              type="number"
+              id="proxy_number"
+              name="proxy_number"
+              style="outline: none; width: 180px"
             />
           </div>
 
           <div
             style="
               display: flex;
-              width: 150px;
+              width: 280px;
               justify-content: space-between;
               margin: 10px 0px;
             "
           >
-            <label for="random_time">random time: </label>
+            <label for="proxy_time">Time: </label>
             <input
-              type="checkbox"
-              id="random_time"
-              name="random_time"
-              placeholder="Enter your random_time"
-              style="outline: none"
+              type="number"
+              id="proxy_time"
+              name="proxy_time"
+              style="outline: none; width: 180px"
             />
           </div>
 
@@ -241,19 +239,22 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             border-radius: 5px;
             overflow: auto;
-            height: 150px;
+            height: 1000px;
             background-color: white;
             margin-top: 15px;
             word-wrap: break-word;
           "
         >
-          <div id="sendStatus" class="styled-button">Send Status</div>
+          <div id="sendStatus">Logs</div>
         </div>
       </div>
     </div>
 
     <script src="panel.js"></script>
     <script src="proxy.js"></script>
+    <script src="/get_proxy_data.js"></script>
+    <script src="/get_landi_data.js"></script>
+    <script src="/product.js"></script>
     <script src="/appscript.js"></script>
     <script src="action.js"></script>
   </body>

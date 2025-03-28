@@ -8,6 +8,7 @@ const proxy_fileDiv = document.getElementById("proxy_file");
 const proxyfileRender = document.getElementById("proxyfileRender");
 const params_fileDiv = document.getElementById("params_file");
 const paramsFileRender = document.getElementById("paramsFileRender");
+const proxyNumber = document.getElementById("proxy_number");
 
 function createDiv(text) {
   // Create a new div element
@@ -39,11 +40,7 @@ function createDiv(text) {
         if (result.arrayUrl) {
           arrayUrl = JSON.parse(JSON.stringify(result.arrayUrl));
         }
-        arrayUrl.push({
-          url: postData.url || "",
-          form_config_id: postData.params.form_config_id || "",
-          ladipage_id: postData.params.ladipage_id || "",
-        });
+        arrayUrl.push(postData);
         chrome.storage.local.set({ arrayUrl });
         loadData();
       });
@@ -140,10 +137,11 @@ keyword_filter.addEventListener("input", () => {
 
 function renderChildStorage(target) {
   const url = target.url;
-  const form_config_id = target.form_config_id;
-  const ladipage_id = target.ladipage_id;
+  const form_config_id = target.params.form_config_id;
+  const ladipage_id = target.params.ladipage_id;
+  const ladi_form_id = target.params.ladi_form_id;
 
-  const text = `${url}?form_config_id=${form_config_id}&ladipage_id=${ladipage_id}`;
+  const text = `${url}?form_config_id=${form_config_id}&ladipage_id=${ladipage_id}&ladi_form_id=${ladi_form_id}`;
   storage.appendChild(createUrlTargetDiv(text));
 }
 
@@ -162,6 +160,14 @@ function loadData() {
 // Call the functions as needed
 // saveData();
 loadData();
+
+proxyNumber.addEventListener("change", function (event) {
+  proxies = JSON.parse(proxyfileRender.innerText);
+
+  proxyfileRender.innerText = JSON.stringify(
+    proxies.slice(0, event.target.value)
+  );
+});
 
 proxy_fileDiv.addEventListener("change", function (event) {
   const file = event.target.files[0];
